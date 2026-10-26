@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Links & Store</title>
+  <!-- FontAwesome Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .profile-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 3px solid #8b5cf6;
+      margin-bottom: 16px;
+      object-fit: cover;
+    }
+    h1 { font-size: 1.4rem; margin-bottom: 8px; }
+    p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 24px; }
+    
+    .links-list { display: flex; flex-direction: column; gap: 16px; }
+    
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 14px 20px;
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+    .link-card:hover {
+      background: rgba(139, 92, 246, 0.4);
+      border-color: #8b5cf6;
+      transform: translateY(-2px);
+    }
+    .link-card i { font-size: 1.3rem; }
+    .fa-facebook { color: #1877f2; }
+    .fa-tiktok { color: #ee1d52; }
+    .fa-youtube { color: #ff0000; }
+    .fa-store { color: #10b981; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Ảnh đại diện & Thông tin -->
+    <img src="https://via.placeholder.com/150" alt="Avatar" class="profile-img">
+    <h1>Tên Của Bạn / Thương Hiệu</h1>
+    <p>Kết nối với tớ qua các nền tảng bên dưới 👇</p>
+
+    <!-- Danh sách Link -->
+    <div class="links-list">
+      <a href="https://www.facebook.com/loakeoHLD" target="_blank" class="link-card">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </a>
+      
+      <a href="https://vt.tiktok.com/ZSg4yYnA6/?page=TikTokShop" target="_blank" class="link-card">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+
+      <a href="https://www.youtube.com/@HLD-TheGioiLoaKaraokeDio-zp1bv" target="_blank" class="link-card">
+        <i class="fa-brands fa-youtube"></i> YouTube
+      </a>
+
+      <a href="https://vangco.vn/" target="_blank" class="link-card">
+        <i class="fa-solid fa-store"></i> Website
+      </a>
+    </div>
+  </div>
+</body>
+</html>
