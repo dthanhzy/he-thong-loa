@@ -6,7 +6,6 @@
     <title>Link-in-Bio | THINH PHAT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- CẤU HÌNH BIẾN & KIẾN TRÚC MÀU SẮC (Impeccable Style) --- */
         :root {
             --bg-gradient-start: #0f0c29;
             --bg-gradient-mid: #302b63;
@@ -17,7 +16,6 @@
             --text-secondary: #cbd5e1;
             --accent-gradient: linear-gradient(135deg, #667eea 0%, #64b5f6 100%);
             
-            /* Màu sắc riêng cho từng nền tảng (Standout Colors) */
             --color-youtube: #FF0000;
             --color-facebook: #1877F2;
             --color-tiktok: #00f2fe;
@@ -52,7 +50,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- BACKGROUND DECORATIVE BLOBS (React-bits aesthetic) --- */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -82,7 +79,6 @@
             50% { transform: translate(40px, 30px) scale(1.1); }
         }
 
-        /* --- PROFILE SECTION --- */
         .profile-container {
             position: relative;
             z-index: 1;
@@ -135,7 +131,6 @@
             margin-bottom: 5px;
         }
 
-        /* --- LINKS CONTAINER --- */
         .links-wrapper {
             position: relative;
             z-index: 1;
@@ -143,10 +138,9 @@
             max-width: 450px;
             display: flex;
             flex-direction: column;
-            gap: 16px; /* Khoảng cách chuẩn 'impeccable' giữa các card */
+            gap: 16px; 
         }
 
-        /* --- SOCIAL LINK CARD STYLE --- */
         .social-card {
             display: flex;
             align-items: center;
@@ -164,7 +158,6 @@
             overflow: hidden;
         }
 
-        /* Hover Effect: Lift & Glow (react-bits style) */
         .social-card:hover {
             transform: translateY(-6px) scale(1.02);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
@@ -175,7 +168,6 @@
             transform: translateY(-2px) scale(0.98);
         }
 
-        /* Icon styling inside card */
         .card-icon {
             width: 42px;
             height: 42px;
@@ -220,29 +212,28 @@
             color: var(--text-primary);
         }
 
-        /* --- SPECIFIC PLATFORM COLORS --- */
-        /* YouTube */
+        /*YouTube*/
         .card-youtube .card-icon {
             background: rgba(255, 0, 0, 0.15);
             color: var(--color-youtube);
         }
-        /* Facebook */
+        /*Facebook*/
         .card-facebook .card-icon {
             background: rgba(24, 119, 242, 0.15);
             color: var(--color-facebook);
         }
-        /* TikTok */
+        /*TikTok*/
         .card-tiktok .card-icon {
             background: rgba(0, 242, 254, 0.1);
             color: var(--color-tiktok);
         }
-        /* Shop / Sales Website */
+        /*Website*/
         .card-shop .card-icon {
             background: rgba(16, 185, 129, 0.15);
             color: var(--color-shop);
         }
 
-        /* Footer copyright */
+        /*Footer copyright*/
         .footer-note {
             margin-top: 40px;
             font-size: 0.75rem;
@@ -256,11 +247,9 @@
 </head>
 <body>
 
-    <!-- Background Blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
-    <!-- Profile Header -->
     <div class="profile-container">
         <div class="avatar-wrapper">
             <img src="https://via.placeholder.com/100/1e293b/f8fafc?text=HTL" alt="Avatar" class="avatar-img">
@@ -269,11 +258,9 @@
         <p class="user-bio">Chia sẻ các kênh thông tin chính thức, mạng xã hội và cửa hàng bán hàng của chúng tôi.</p>
     </div>
 
-    <!-- Links Section -->
     <div class="links-wrapper">
         
-        <!-- YouTube Channel -->
-        <a href="https://youtube.com/@cualanhban" target="_blank" class="social-card card-youtube">
+        <a href="https://www.youtube.com/@HLD-TheGioiLoaKaraokeDio-zp1bv" target="_blank" class="social-card card-youtube">
             <div class="card-icon">
                 <i class="fab fa-youtube"></i>
             </div>
@@ -286,8 +273,7 @@
             </div>
         </a>
 
-        <!-- Facebook Page -->
-        <a href="https://facebook.com/profile.php?id=1000" target="_blank" class="social-card card-facebook">
+        <a href="https://www.facebook.com/loakeoHLD" target="_blank" class="social-card card-facebook">
             <div class="card-icon">
                 <i class="fab fa-facebook-f"></i>
             </div>
@@ -300,8 +286,7 @@
             </div>
         </a>
 
-        <!-- TikTok Profile -->
-        <a href="https://tiktok.com/@username" target="_blank" class="social-card card-tiktok">
+        <a href="https://www.tiktok.com/@thinhphataudio831?_r=1&_t=ZS-9Asvrz8uNr2" target="_blank" class="social-card card-tiktok">
             <div class="card-icon">
                 <i class="fab fa-tiktok"></i>
             </div>
@@ -314,8 +299,7 @@
             </div>
         </a>
 
-        <!-- Website Bán hàng / Shop -->
-        <a href="https://shop.example.com" target="_blank" class="social-card card-shop">
+        <a href="https://vangco.vn/" target="_blank" class="social-card card-shop">
             <div class="card-icon">
                 <i class="fas fa-shopping-cart"></i>
             </div>
