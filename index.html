@@ -1,92 +1,338 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Links & Store</title>
-  <!-- FontAwesome Icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .container {
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-    }
-    .profile-img {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      border: 3px solid #8b5cf6;
-      margin-bottom: 16px;
-      object-fit: cover;
-    }
-    h1 { font-size: 1.4rem; margin-bottom: 8px; }
-    p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 24px; }
-    
-    .links-list { display: flex; flex-direction: column; gap: 16px; }
-    
-    .link-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 14px 20px;
-      border-radius: 12px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.25s ease;
-    }
-    .link-card:hover {
-      background: rgba(139, 92, 246, 0.4);
-      border-color: #8b5cf6;
-      transform: translateY(-2px);
-    }
-    .link-card i { font-size: 1.3rem; }
-    .fa-facebook { color: #1877f2; }
-    .fa-tiktok { color: #ee1d52; }
-    .fa-youtube { color: #ff0000; }
-    .fa-store { color: #10b981; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link-in-Bio | THINH PHAT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CẤU HÌNH BIẾN & KIẾN TRÚC MÀU SẮC (Impeccable Style) --- */
+        :root {
+            --bg-gradient-start: #0f0c29;
+            --bg-gradient-mid: #302b63;
+            --bg-gradient-end: #24243e;
+            --card-bg: rgba(255, 255, 255, 0.08); /* Glassmorphism */
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --accent-gradient: linear-gradient(135deg, #667eea 0%, #64b5f6 100%);
+            
+            /* Màu sắc riêng cho từng nền tảng (Standout Colors) */
+            --color-youtube: #FF0000;
+            --color-facebook: #1877F2;
+            --color-tiktok: #00f2fe;
+            --color-shop: #10b981;
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- BACKGROUND DECORATIVE BLOBS (React-bits aesthetic) --- */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: #667eea;
+            top: -100px;
+            left: -100px;
+            animation: floatBlob 12s infinite ease-in-out;
+        }
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            background: #ff6b6b;
+            bottom: -80px;
+            right: -80px;
+            animation: floatBlob 10s infinite ease-in-out reverse;
+        }
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, 30px) scale(1.1); }
+        }
+
+        /* --- PROFILE SECTION --- */
+        .profile-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .avatar-wrapper {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 4px;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.5);
+            animation: pulseBorder 4s infinite ease-in-out;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #1e293b;
+            object-fit: cover;
+            border: 3px solid var(--bg-gradient-start);
+        }
+
+        @keyframes pulseBorder {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(102, 126, 234, 0.7); }
+        }
+
+        .user-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .user-bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        /* --- LINKS CONTAINER --- */
+        .links-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px; /* Khoảng cách chuẩn 'impeccable' giữa các card */
+        }
+
+        /* --- SOCIAL LINK CARD STYLE --- */
+        .social-card {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover Effect: Lift & Glow (react-bits style) */
+        .social-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .social-card:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        /* Icon styling inside card */
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover .card-icon {
+            transform: rotate(-6deg) scale(1.1);
+        }
+
+        .card-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .card-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .card-arrow {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-card:hover .card-arrow {
+            transform: translateX(5px);
+            color: var(--text-primary);
+        }
+
+        /* --- SPECIFIC PLATFORM COLORS --- */
+        /* YouTube */
+        .card-youtube .card-icon {
+            background: rgba(255, 0, 0, 0.15);
+            color: var(--color-youtube);
+        }
+        /* Facebook */
+        .card-facebook .card-icon {
+            background: rgba(24, 119, 242, 0.15);
+            color: var(--color-facebook);
+        }
+        /* TikTok */
+        .card-tiktok .card-icon {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--color-tiktok);
+        }
+        /* Shop / Sales Website */
+        .card-shop .card-icon {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--color-shop);
+        }
+
+        /* Footer copyright */
+        .footer-note {
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Ảnh đại diện & Thông tin -->
-    <img src="thinhphat.jpg" alt="Avatar" class="profile-img">
-    <h1>Thịnh Phát</h1>
-    <p>Tham khảo hệ thống của chúng tôi ở dưới 👇</p>
 
-    <!-- Danh sách Link -->
-    <div class="links-list">
-      <a href="https://www.facebook.com/loakeoHLD" target="_blank" class="link-card">
-        <i class="fa-brands fa-facebook"></i> Facebook
-      </a>
-      
-      <a href="https://vt.tiktok.com/ZSg4yYnA6/?page=TikTokShop" target="_blank" class="link-card">
-        <i class="fa-brands fa-tiktok"></i> TikTok
-      </a>
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
 
-      <a href="https://www.youtube.com/@HLD-TheGioiLoaKaraokeDio-zp1bv" target="_blank" class="link-card">
-        <i class="fa-brands fa-youtube"></i> YouTube
-      </a>
-
-      <a href="https://vangco.vn/" target="_blank" class="link-card">
-        <i class="fa-solid fa-store"></i> Website
-      </a>
+    <!-- Profile Header -->
+    <div class="profile-container">
+        <div class="avatar-wrapper">
+            <img src="https://via.placeholder.com/100/1e293b/f8fafc?text=HTL" alt="Avatar" class="avatar-img">
+        </div>
+        <h1 class="user-name">Thịnh Phát</h1>
+        <p class="user-bio">Chia sẻ các kênh thông tin chính thức, mạng xã hội và cửa hàng bán hàng của chúng tôi.</p>
     </div>
-  </div>
+
+    <!-- Links Section -->
+    <div class="links-wrapper">
+        
+        <!-- YouTube Channel -->
+        <a href="https://youtube.com/@cualanhban" target="_blank" class="social-card card-youtube">
+            <div class="card-icon">
+                <i class="fab fa-youtube"></i>
+            </div>
+            <div class="card-text">
+                <div class="card-title">Kênh YouTube</div>
+                <div class="card-subtitle">Xem các video hướng dẫn & tin tức mới nhất</div>
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <!-- Facebook Page -->
+        <a href="https://facebook.com/profile.php?id=1000" target="_blank" class="social-card card-facebook">
+            <div class="card-icon">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <div class="card-text">
+                <div class="card-title">Trang Facebook</div>
+                <div class="card-subtitle">Cập nhật tin tức, sự kiện và tương tác cộng đồng</div>
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <!-- TikTok Profile -->
+        <a href="https://tiktok.com/@username" target="_blank" class="social-card card-tiktok">
+            <div class="card-icon">
+                <i class="fab fa-tiktok"></i>
+            </div>
+            <div class="card-text">
+                <div class="card-title">TikTok</div>
+                <div class="card-subtitle">Những video ngắn cực kỳ thú vị và hot trend</div>
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <!-- Website Bán hàng / Shop -->
+        <a href="https://shop.example.com" target="_blank" class="social-card card-shop">
+            <div class="card-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="card-text">
+                <div class="card-title">Website bán hàng</div>
+                <div class="card-subtitle">Mua sắm các sản phẩm chính hãng & ưu đãi đặc biệt</div>
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="footer-note">
+        &copy; 2026 THINH PHAT. All rights reserved.
+    </div>
+
 </body>
 </html>
